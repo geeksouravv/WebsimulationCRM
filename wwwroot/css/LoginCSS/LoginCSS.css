@@ -1,0 +1,46 @@
+﻿.Login-body {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    height: 100vh;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+    .login-card h3 {
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+.form-control {
+    border-radius: 8px;
+}
+
+.btn-primary {
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+}
+
+.text-muted a {
+    text-decoration: none;
+}
+
+    .text-muted a:hover {
+        text-decoration: underline;
+    }
+@media (max-width: 420px){
+    .login-card{
+        margin:0 10px;
+    }
+}
