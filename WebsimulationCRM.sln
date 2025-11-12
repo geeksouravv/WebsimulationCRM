@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsimulationCRM", "WebsimulationCRM.csproj", "{3380A7BB-EE49-4B75-97D5-D5B5E181CC09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsimulationCRM.UI", "WebsimulationCRM.UI.csproj", "{3380A7BB-EE49-4B75-97D5-D5B5E181CC09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "..\Entities\Entities.csproj", "{76067A09-44AF-4E84-8885-77BEB9EEB2DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsimulationCRM.CORE", "..\WebsimulationCRM.CORE\WebsimulationCRM.CORE.csproj", "{18C6B663-B3F0-4C77-A1E4-569AEEB46466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsimulationCRM.Infrastructure", "..\WebsimulationCRM.Infrastructure\WebsimulationCRM.Infrastructure.csproj", "{F57C9D6C-EEE6-4F2B-845E-FA14E3768A5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,14 @@ Global
 		{3380A7BB-EE49-4B75-97D5-D5B5E181CC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3380A7BB-EE49-4B75-97D5-D5B5E181CC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3380A7BB-EE49-4B75-97D5-D5B5E181CC09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76067A09-44AF-4E84-8885-77BEB9EEB2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76067A09-44AF-4E84-8885-77BEB9EEB2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76067A09-44AF-4E84-8885-77BEB9EEB2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76067A09-44AF-4E84-8885-77BEB9EEB2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C6B663-B3F0-4C77-A1E4-569AEEB46466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C6B663-B3F0-4C77-A1E4-569AEEB46466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C6B663-B3F0-4C77-A1E4-569AEEB46466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C6B663-B3F0-4C77-A1E4-569AEEB46466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F57C9D6C-EEE6-4F2B-845E-FA14E3768A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57C9D6C-EEE6-4F2B-845E-FA14E3768A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57C9D6C-EEE6-4F2B-845E-FA14E3768A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57C9D6C-EEE6-4F2B-845E-FA14E3768A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
