@@ -1,95 +1,153 @@
-﻿.Login-body {
-    background: linear-gradient(135deg, #007bff, #6610f2);
+﻿/* BACKGROUND */
+.login-container {
     min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc);
     padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
 }
 
+/* CARD */
 .login-card {
     width: 100%;
-    max-width: 520px;
-    background: #fff;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.6s ease;
 }
 
-    .login-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .login-card h3 {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-card h2 {
+    text-align: center;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+/* INPUT FIELDS */
+.input-group {
+    margin-bottom: 18px;
+}
+
+    .input-group label {
         font-weight: 600;
-        margin-bottom: 25px;
-        text-align: center;
+        margin-bottom: 5px;
+        display: block;
         color: #333;
     }
 
-.form-control {
-    border-radius: 8px;
-    padding: 10px;
-    transition: all 0.3s ease;
-}
-
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1.5px solid #ccc;
+        outline: none;
+        font-size: 15px;
+        transition: 0.3s ease;
     }
 
-.btn-primary {
-    border-radius: 8px;
-    width: 100%;
-    padding: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #007bff, #6610f2);
-    border: none;
-    transition: all 0.3s ease;
+        .input-group input:focus {
+            border-color: #4c7cff;
+            box-shadow: 0 0 5px rgba(76,124,255,0.35);
+        }
+
+/* REMEMBER + FORGOT */
+.extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-    .btn-primary:hover {
-        background: linear-gradient(135deg, #0056d2, #520dc2);
-        transform: scale(1.02);
-    }
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
 
-.text-muted a {
+.forgot {
     text-decoration: none;
-    color: #6610f2;
-    font-weight: 500;
+    font-size: 14px;
+    color: #0052d4;
 }
 
-    .text-muted a:hover {
+    .forgot:hover {
         text-decoration: underline;
     }
 
-@media (max-width: 768px) {
-    .login-card {
-        max-width: 90%;
-        padding: 25px;
-    }
-
-        .login-card h3 {
-            font-size: 22px;
-        }
-
-    .btn-primary {
-        padding: 10px;
-        font-size: 15px;
-    }
+/* LOGIN BUTTON */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #0052d4, #4364f7);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    cursor: pointer;
 }
 
-@media (max-width: 480px) {
-    .login-card {
-        padding: 20px;
+    .btn-login:hover {
+        transform: scale(1.03);
+        background: linear-gradient(135deg, #0041b2, #2f52d9);
     }
 
-    .form-control {
-        font-size: 14px;
+/* REGISTER TEXT */
+.register-text {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+    color: #444;
+}
+
+    .register-text a {
+        text-decoration: none;
+        color: #0052d4;
+        font-weight: 600;
+    }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+/* FULLY RESPONSIVE */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .btn-login {
+        font-size: 15px;
     }
 }

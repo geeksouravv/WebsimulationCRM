@@ -1,0 +1,88 @@
+﻿@model WebsimulationCRM.CORE.DTO.LeadAddRequest
+
+@{
+    ViewData["Title"] = "Add Lead";
+}
+<link rel="stylesheet" href="~/css/Leads/AddLead.css" />
+
+<div class="lead-container">
+
+    <h2 class="page-title">Add New Lead</h2>
+    <p class="subtitle">Fill the details to add a new customer lead</p>
+
+    <form asp-action="AddLead" method="post" class="lead-form">
+
+        <div class="form-grid">
+
+            <!-- Customer Name -->
+            <div class="form-group">
+                <label>Customer Name <span>*</span></label>
+                <input asp-for="CustomerName" placeholder="Enter customer name" />
+                <span class="error" asp-validation-for="CustomerName"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Email" placeholder="Enter customer email" />
+                <span class="error" asp-validation-for="Email"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label>Phone Number <span>*</span></label>
+                <input asp-for="PhoneNumber" placeholder="Enter phone number" />
+                <span class="error" asp-validation-for="PhoneNumber"></span>
+            </div>
+
+            <!-- Lead Source -->
+            <div class="form-group">
+                <label>Source <span>*</span></label>
+                <select asp-for="Source" asp-items="Html.GetEnumSelectList<Source>()"></select>
+                <span class="error" asp-validation-for="Source"></span>
+            </div>
+
+            <!-- Lead Status -->
+            <div class="form-group">
+                <label>Lead Status <span>*</span></label>
+                <select asp-for="LeadStatus" asp-items="Html.GetEnumSelectList<LeadStatus>()"></select>
+                <span class="error" asp-validation-for="LeadStatus"></span>
+            </div>
+
+            <!-- Created At -->
+            <div class="form-group">
+                <label>Created At <span>*</span></label>
+                <input asp-for="CreatedAt" type="datetime-local" />
+                <span class="error" asp-validation-for="CreatedAt"></span>
+            </div>
+
+        </div>
+
+        <button type="submit" class="submit-btn">Add Lead</button>
+
+    </form>
+
+    <div class="excel-section">
+
+        <h3 class="excel-title">Bulk Upload Leads (Excel)</h3>
+        <p class="excel-sub">Upload an Excel file to add multiple leads at once.</p>
+
+        <form asp-action="UploadExcel" method="post" enctype="multipart/form-data" class="excel-upload-box">
+
+            <input type="file" name="excelFile" accept=".xlsx" class="excel-input" />
+
+            <button type="submit" class="excel-upload-btn">Upload Excel</button>
+        </form>
+
+        <a href="~/files/sample-leads.xlsx" download class="download-sample-btn">
+            Download Sample Excel
+        </a>
+
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

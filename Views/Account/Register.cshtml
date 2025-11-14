@@ -1,87 +1,87 @@
 ﻿@model RegisterDTO
 
-<link rel="stylesheet" href="/css/LoginCSS/LoginCSS.css" />
+<link rel="stylesheet" href="~/css/Register/Register.css" />
 
-<div class="Login-body">
-    <div class="login-card register-card">
-        <h3>CRM Registration</h3>
+<div class="form-wrapper">
+
+    <div class="form-card">
+        <h2>Add New Employee</h2>
+        <p class="subtitle">Fill the details to create a new employee account</p>
+
         <form asp-controller="Account" asp-action="Register" method="post">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="UserName" class="form-label"></label>
-                    <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
-                    <span asp-validation-for="UserName" class="text-danger"></span>
+
+            <div class="grid-2">
+
+                <div class="input-box">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" placeholder="Enter username" />
+                    <span asp-validation-for="UserName" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Email" class="form-label"></label>
-                    <input asp-for="Email" class="form-control" placeholder="Enter your email" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="input-box">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" placeholder="Enter email" />
+                    <span asp-validation-for="Email" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="PhoneNumber" class="form-label"></label>
-                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <div class="input-box">
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" placeholder="Enter phone number" />
+                    <span asp-validation-for="PhoneNumber" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Role" class="form-label"></label>
-                    <select asp-for="Role" class="form-control">
+                <div class="input-box">
+                    <label asp-for="Role"></label>
+                    <select asp-for="Role">
                         <option value="">-- Select Role --</option>
                         <option>Admin</option>
                         <option>Manager</option>
                         <option>Sales Executive</option>
                     </select>
-                    <span asp-validation-for="Role" class="text-danger"></span>
+                    <span asp-validation-for="Role" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="TeamName" class="form-label"></label>
-                    <select asp-for="TeamName" class="form-control">
+                <div class="input-box">
+                    <label asp-for="TeamName"></label>
+                    <select asp-for="TeamName">
                         <option value="">-- Select Team --</option>
                         <option>Alpha</option>
                         <option>Beta</option>
                         <option>Delta</option>
                         <option>Omega</option>
                     </select>
-                    <span asp-validation-for="TeamName" class="text-danger"></span>
+                    <span asp-validation-for="TeamName" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="MangerID" class="form-label"></label>
-                    <input asp-for="MangerID" class="form-control" placeholder="Enter Manager ID (optional)" />
-                    <span asp-validation-for="MangerID" class="text-danger"></span>
+                <div class="input-box">
+                    <label asp-for="MangerID"></label>
+                    <input asp-for="MangerID" placeholder="Enter Manager ID (optional)" />
+                    <span asp-validation-for="MangerID" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Password" class="form-label"></label>
-                    <input asp-for="Password" class="form-control" placeholder="Enter password" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
+                <div class="input-box">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" placeholder="Enter password" />
+                    <span asp-validation-for="Password" class="error"></span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label asp-for="ConfirmPassword" class="form-label"></label>
-                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <div class="input-box">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirm password" />
+                    <span asp-validation-for="ConfirmPassword" class="error"></span>
                 </div>
             </div>
 
-            <div class="form-check mb-3 mt-2">
-                <input asp-for="isActive" class="form-check-input" />
-                <label asp-for="isActive" class="form-check-label">Is Active</label>
-                <span asp-validation-for="isActive" class="text-danger"></span>
+            <div class="check-row">
+                <label class="check">
+                    <input asp-for="isActive" />
+                    <span>Active Employee</span>
+                </label>
             </div>
 
             <input type="hidden" asp-for="createdAt" value="@DateTime.Now" />
 
-            <button type="submit" class="btn btn-primary">Register</button>
-
-            <div class="text-center mt-3 text-muted">
-                <small>Already have an account? <a asp-controller="Account" asp-action="Login">Login here</a></small>
-            </div>
+            <button class="btn-submit" type="submit">Save Employee</button>
         </form>
     </div>
 </div>
-
-

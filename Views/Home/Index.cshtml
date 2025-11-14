@@ -1,8 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link href="~/css/Dashboard/Dashboard.css" rel="stylesheet" />
+
+<div class="dashboard-container">
+
+    <h2 class="dashboard-title">Welcome to WebSimulation CRM</h2>
+    <p class="dashboard-sub">Overview of your leads and follow-ups</p>
+
+    <!-- Total Leads (NEW CARD) -->
+    <div class="total-leads-card">
+        <h3>📊 Total Leads</h3>
+        <p class="total-count">58</p> <!-- Replace with dynamic count -->
+    </div>
+
+    <!-- Lead Status Cards -->
+    <div class="stats-grid">
+
+        <!-- Hot Leads -->
+        <div class="stat-card hot">
+            <h3>🔥 Hot Leads</h3>
+            <p class="count">35</p>
+            <a href="/Leads/Hot" class="view-btn">View</a>
+        </div>
+
+        <!-- Warm Leads -->
+        <div class="stat-card warm">
+            <h3>🌤 Warm Leads</h3>
+            <p class="count">15</p>
+            <a href="/Leads/Warm" class="view-btn">View</a>
+        </div>
+
+        <!-- Cold Leads -->
+        <div class="stat-card cold">
+            <h3>❄ Cold Leads</h3>
+            <p class="count">8</p>
+            <a href="/Leads/Cold" class="view-btn">View</a>
+        </div>
+
+    </div>
+
+    <!-- Follow-ups -->
+    <h3 class="section-title">Follow-Up Activity</h3>
+
+    <div class="followup-grid">
+
+        <!-- Upcoming Follow-ups -->
+        <div class="follow-card upcoming">
+            <h4>📅 Upcoming Follow-ups</h4>
+            <p class="small-count">15</p>
+            <a href="/Followups/Upcoming" class="view-btn">View</a>
+        </div>
+
+        <!-- Not Followed Up -->
+        <div class="follow-card missed">
+            <h4>⚠ Not Followed Up</h4>
+            <p class="small-count">10</p>
+            <a href="/Followups/Missed" class="view-btn">View</a>
+        </div>
+
+    </div>
+
 </div>

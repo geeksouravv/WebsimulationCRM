@@ -1,31 +1,39 @@
-﻿<link rel="stylesheet" href="/css/LoginCSS/LoginCSS.css" />
+﻿@model LoginDTO
+@{
+    Layout = "";
+}
+<link rel="stylesheet" href="/css/LoginCSS/LoginCSS.css?v=1" />
 
-<div class="Login-body">
-<div class="login-card">
-    <h3>CRM Login</h3>
-    <form method="post">
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input class="form-control" placeholder="Enter your email" />
-            <span class="text-danger"></span>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" placeholder="Enter password" />
-            <span class="text-danger"></span>
-        </div>
+<div class="login-container">
+    <div class="login-card">
+        <h2>Welcome Back 👋</h2>
+        <p class="subtitle">Login to continue to your CRM</p>
 
-        <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" />
-            <label class="form-check-label">Remember me</label>
-        </div>
+        <form asp-controller="Account" asp-action="Login" asp-route-ReturnURL="@Context.Request.Query["ReturnUrl"]" method="post">
 
-        <button type="submit" class="btn btn-primary">Login</button>
+            <div class="input-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <div class="text-center mt-3 text-muted">
-            <small>Forgot password? <a href="#">Reset here</a></small>
-        </div>
-    </form>
-</div>
+            <div class="input-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="extras">
+                <label class="remember">
+                    <input type="checkbox" />
+                    Remember me
+                </label>
+
+                <a href="/Account/ForgotPassword" class="forgot">Forgot Password?</a>
+            </div>
+
+            <button class="btn-login" type="submit">Login</button>
+        </form>
+    </div>
 </div>
