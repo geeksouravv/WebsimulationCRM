@@ -32,14 +32,12 @@
 
                 <div class="input-box">
                     <label asp-for="Role"></label>
-                    <select asp-for="Role">
+                    <select asp-for="Role" asp-items="Html.GetEnumSelectList<WebsimulationCRM.CORE.Enums.UserTypeOptions>()">
                         <option value="">-- Select Role --</option>
-                        <option>Admin</option>
-                        <option>Manager</option>
-                        <option>Sales Executive</option>
                     </select>
                     <span asp-validation-for="Role" class="error"></span>
                 </div>
+
 
                 <div class="input-box">
                     <label asp-for="TeamName"></label>
