@@ -157,6 +157,40 @@ namespace WebsimulationCRM.UI.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [AllowAnonymous]
+        public IActionResult forgotPassword()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> forgotPasswordAsync(ForgetPasswordDTO forgetPassword)
+        {
+            if (!ModelState.IsValid)
+                return View(forgetPassword);
+
+            var user = await _userManager.FindByEmailAsync(forgetPassword.Email);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email not found in system");
+                return View(forgetPassword);
+            }
+
+            // Generate reset token
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            // Create reset link
+            var resetLink = Url.Action("ResetPassword", "Account",
+                new { email = forgetPassword.Email, token = token }, Request.Scheme);
+
+            // Send email logic here (SMTP or SendGrid)
+
+            TempData["Success"] = "Password reset link sent to your email.";
+            return RedirectToAction("Login");
+        }
+
         //public async Task<IActionResult> IsEmailAlreadyRegistered(string Email)
         //{
         //   ApplicationUser user = await _userManager.FindByEmailAsync(email);

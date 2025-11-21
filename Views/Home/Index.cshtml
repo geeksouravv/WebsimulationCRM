@@ -6,60 +6,115 @@
 
 <div class="dashboard-container">
 
-    <h2 class="dashboard-title">Welcome to WebSimulation CRM</h2>
-    <p class="dashboard-sub">Overview of your leads and follow-ups</p>
+    <h2 class="page-title">CRM Dashboard</h2>
 
-    <!-- Total Leads (NEW CARD) -->
-    <div class="total-leads-card">
-        <h3>📊 Total Leads</h3>
-        <p class="total-count">58</p> <!-- Replace with dynamic count -->
-    </div>
+    <!-- ---------------- SECTION 1 : LEADS OVERVIEW ---------------- -->
+    <h3 class="section-heading">Leads Overview</h3>
 
-    <!-- Lead Status Cards -->
-    <div class="stats-grid">
+    <div class="card-grid">
+
+        <!-- Total Leads -->
+        <div class="dash-card">
+            <h3>Total Leads</h3>
+            <span class="count">150</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
+        </div>
+
+        <!-- New Leads -->
+        <div class="dash-card">
+            <h3>New Leads</h3>
+            <span class="count">65</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
+        </div>
 
         <!-- Hot Leads -->
-        <div class="stat-card hot">
-            <h3>🔥 Hot Leads</h3>
-            <p class="count">35</p>
-            <a href="/Leads/Hot" class="view-btn">View</a>
+        <div class="dash-card hot">
+            <h3>Hot Leads</h3>
+            <span class="count">20</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
         </div>
 
         <!-- Warm Leads -->
-        <div class="stat-card warm">
-            <h3>🌤 Warm Leads</h3>
-            <p class="count">15</p>
-            <a href="/Leads/Warm" class="view-btn">View</a>
+        <div class="dash-card warm">
+            <h3>Warm Leads</h3>
+            <span class="count">16</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
         </div>
 
         <!-- Cold Leads -->
-        <div class="stat-card cold">
-            <h3>❄ Cold Leads</h3>
-            <p class="count">8</p>
-            <a href="/Leads/Cold" class="view-btn">View</a>
+        <div class="dash-card cold">
+            <h3>Cold Leads</h3>
+            <span class="count">10</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
+        </div>
+
+        <!-- Converted Leads -->
+        <div class="dash-card converted">
+            <h3>Converted Leads</h3>
+            <span class="count">30</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
+        </div>
+
+        <!-- Dead Leads -->
+        <div class="dash-card dead">
+            <h3>Dead Leads</h3>
+            <span class="count">50</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
         </div>
 
     </div>
 
-    <!-- Follow-ups -->
-    <h3 class="section-title">Follow-Up Activity</h3>
+    <!-- ---------------- SECTION 2 : FOLLOW-UP OVERVIEW ---------------- -->
+    <h3 class="section-heading followup-title">Follow-Up Overview</h3>
 
-    <div class="followup-grid">
+    <div class="card-grid">
 
         <!-- Upcoming Follow-ups -->
-        <div class="follow-card upcoming">
-            <h4>📅 Upcoming Follow-ups</h4>
-            <p class="small-count">15</p>
-            <a href="/Followups/Upcoming" class="view-btn">View</a>
+        <div class="dash-card upcoming">
+            <h3>Upcoming Follow-ups</h3>
+            <span class="count">30</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
         </div>
 
-        <!-- Not Followed Up -->
-        <div class="follow-card missed">
-            <h4>⚠ Not Followed Up</h4>
-            <p class="small-count">10</p>
-            <a href="/Followups/Missed" class="view-btn">View</a>
+        <!-- Missed Follow-ups -->
+        <div class="dash-card missed">
+            <h3>Missed Follow-ups</h3>
+            <span class="count">15</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
         </div>
 
+        <!-- Today's Follow-ups -->
+        <div class="dash-card today">
+            <h3>Today’s Follow-ups</h3>
+            <span class="count">15</span>
+            <a href="/Lead/Index" class="view-btn">View</a>
+        </div>
+
+    </div>
+
+    <!-- ---------------- SECTION 3 : TOP PERFORMERS ---------------- -->
+    <div class="top-performer-section">
+        <h3>Top Performers</h3>
+
+        <table class="top-performer-table">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Total Leads</th>
+                    <th>Hot Leads</th>
+                    <th>Converted</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Sourav Mavi</td>
+                    <td>20</td>
+                    <td>12</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

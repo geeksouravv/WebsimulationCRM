@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebsimulationCRM.CORE.Domain.IdentityEntities;
+using WebsimulationCRM.CORE.RepositoryContracts;
+using WebsimulationCRM.CORE.ServiceContracts;
+using WebsimulationCRM.CORE.Services;
 using WebsimulationCRM.Infrastructure.DBContext;
+using WebsimulationCRM.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +32,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Account/login";
 });
-
+// Lead Repository + Service DI
+builder.Services.AddScoped<ILeadRepository, LeadsRepository>();
+builder.Services.AddScoped<ILeadsAddService, LeadsAddService>();
 // Add services to the container.
 var app = builder.Build();
 

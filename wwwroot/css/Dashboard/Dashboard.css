@@ -1,148 +1,135 @@
-﻿.dashboard-container {
+﻿
+.dashboard-container {
     padding: 20px;
-    max-width: 1300px;
-    margin: auto;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.dashboard-title {
+.page-title {
     font-size: 28px;
-    font-weight: 700;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Section Heading */
+.section-heading {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
     color: #2c3e50;
 }
 
-.dashboard-sub {
-    color: #666;
-    margin-bottom: 25px;
+.followup-title {
+    margin-top: 35px;
 }
 
-/* MAIN GRID */
-.stats-grid {
+/* Card Grid */
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* Card Design */
-.stat-card {
+/* Cards */
+.dash-card {
     background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
-    .stat-card:hover {
+    .dash-card h3 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .dash-card .count {
+        display: block;
+        margin-top: 10px;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    /* Card Hover */
+    .dash-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    /* Colors */
-    .stat-card.hot {
-        border-left: 6px solid #e74c3c;
-    }
-
-    .stat-card.warm {
-        border-left: 6px solid #f1c40f;
-    }
-
-    .stat-card.cold {
-        border-left: 6px solid #3498db;
-    }
-
-    /* Count text */
-    .stat-card .count {
-        font-size: 42px;
-        font-weight: 700;
-        margin: 10px 0;
-    }
-
-/* View Button */
+/* VIEW BUTTON */
 .view-btn {
-    text-decoration: none;
-    padding: 10px 18px;
+    margin-top: 15px;
+    display: inline-block;
+    padding: 8px 18px;
     background: #007bff;
     color: white;
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 12px;
-    transition: 0.3s;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
     .view-btn:hover {
         background: #0056b3;
     }
 
-/* FOLLOW-UP SECTION */
-.section-title {
-    font-size: 22px;
+/* Colors */
+.hot {
+    border-left: 6px solid #e63946;
+}
+
+.warm {
+    border-left: 6px solid #ff9f1c;
+}
+
+.cold {
+    border-left: 6px solid #2ec4b6;
+}
+
+.upcoming {
+    border-left: 6px solid #457b9d;
+}
+
+.missed {
+    border-left: 6px solid #d90429;
+}
+
+.today {
+    border-left: 6px solid #8d99ae;
+}
+
+.converted {
+    border-left: 6px solid #38b000;
+}
+
+.dead {
+    border-left: 6px solid #6c757d;
+}
+
+/* Top Performers Table */
+.top-performer-section {
     margin-top: 40px;
-    color: #2c3e50;
-}
-
-.followup-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 15px;
-}
-
-.follow-card {
-    background: white;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-    .follow-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .follow-card.upcoming {
-        border-left: 6px solid #27ae60;
-    }
-
-    .follow-card.missed {
-        border-left: 6px solid #e67e22;
-    }
-
-.small-count {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 10px 0;
-}
-
-/* RESPONSIVE */
-@media (max-width: 480px) {
-    .dashboard-title {
-        font-size: 22px;
-    }
-
-    .stat-card .count {
-        font-size: 32px;
-    }
-
-    .small-count {
-        font-size: 26px;
-    }
-}
-
-.total-leads-card {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    color: #fff;
     padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-    .total-leads-card h3 {
-        font-size: 22px;
-        margin-bottom: 5px;
+.top-performer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .top-performer-table th,
+    .top-performer-table td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
     }
 
-.total-count {
-    font-size: 38px;
-    font-weight: bold;
-}
+    .top-performer-table th {
+        background: #f8f9fa;
+        font-weight: 600;
+        text-align: left;
+    }
