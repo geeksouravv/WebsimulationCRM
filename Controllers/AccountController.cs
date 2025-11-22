@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WebsimulationCRM.CORE.Domain.IdentityEntities;
 using WebsimulationCRM.CORE.DTO;
 using WebsimulationCRM.CORE.Enums;
+using WebsimulationCRM.CORE.ServiceContracts;
 
 namespace WebsimulationCRM.UI.Controllers
 {
@@ -16,12 +17,14 @@ namespace WebsimulationCRM.UI.Controllers
         private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly Microsoft.AspNetCore.Identity.RoleManager<ApplicationRole> _roleManager;
+        private readonly INotificationService _notificationService;
 
-        public AccountController(Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, Microsoft.AspNetCore.Identity.RoleManager<ApplicationRole> roleManager)
+        public AccountController(Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, Microsoft.AspNetCore.Identity.RoleManager<ApplicationRole> roleManager, INotificationService notificationService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _notificationService = notificationService;
         }
 
         [AllowAnonymous]
@@ -60,10 +63,13 @@ namespace WebsimulationCRM.UI.Controllers
 
                 await _signInManager.RefreshSignInAsync(user);
 
+                _notificationService.Success("Logged in successfully!");
+
                 return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("Login", "Invalid Email or Password");
+            _notificationService.Error("Invalid Email or Password");
             return View(loginDTO);
+          
         }
 
         [AllowAnonymous]
@@ -81,6 +87,21 @@ namespace WebsimulationCRM.UI.Controllers
             {
                 ViewBag.Errors = ModelState.Values.SelectMany(temp =>  temp.Errors).Select(temp => temp.ErrorMessage);
 
+                return View(registerDTO);
+            }
+
+            var existingEmailUser = await _userManager.FindByEmailAsync(registerDTO.Email);
+
+            if (existingEmailUser != null)
+            {
+                _notificationService.Error("This email is already registered!");
+                return View(registerDTO);
+            }
+
+            var existingPhoneUser =  _userManager.Users.FirstOrDefault(temp => temp.PhoneNumber == registerDTO.PhoneNumber);
+            if (existingPhoneUser != null)
+            {
+                _notificationService.Error("This PhoneNumber is already registered!");
                 return View(registerDTO);
             }
 
@@ -135,7 +156,7 @@ namespace WebsimulationCRM.UI.Controllers
                 await _userManager.AddClaimAsync(user, new Claim("EmployeeName", user.EmployeeName));
 
                 await _signInManager.SignInAsync(user, isPersistent: false);
-
+                _notificationService.Success("Account created successfully!");
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -145,6 +166,7 @@ namespace WebsimulationCRM.UI.Controllers
                     ModelState.AddModelError("Register", error.Description);
                 }
 
+                _notificationService.Error("Something went wrong!");
                 return View(registerDTO);
             }
         
@@ -154,6 +176,7 @@ namespace WebsimulationCRM.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            _notificationService.Success("Logout Successfully");
             return RedirectToAction("Login", "Account");
         }
 

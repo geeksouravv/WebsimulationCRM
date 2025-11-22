@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using WebsimulationCRM.CORE.Domain.IdentityEntities;
 using WebsimulationCRM.CORE.RepositoryContracts;
@@ -11,7 +12,10 @@ using WebsimulationCRM.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddSessionStateTempDataProvider();
+
+builder.Services.AddSession();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -35,6 +39,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Lead Repository + Service DI
 builder.Services.AddScoped<ILeadRepository, LeadsRepository>();
 builder.Services.AddScoped<ILeadsAddService, LeadsAddService>();
+builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 // Add services to the container.
 var app = builder.Build();
 
@@ -46,11 +53,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 
 app.UseRouting();
+
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

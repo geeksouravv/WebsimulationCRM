@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewData["Title"] - WebsimulationCRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
+
     <link href="~/css/site.css" rel="stylesheet" />
 
 </head>
@@ -49,6 +53,7 @@
         <div class="submenu">
             <a asp-controller="Leads" asp-action="AddLead">➕ Add Lead</a>
             <a asp-controller="Leads" asp-action="AssignLead">📌 Assign Lead</a>
+            <a asp-controller="Leads" asp-action="NewLeads">🆕 New Leads</a>
             <a asp-controller="Leads" asp-action="HotLeads">🔥 Hot Leads</a>
             <a asp-controller="Leads" asp-action="ColdLeads">❄ Cold Leads</a>
             <a asp-controller="Leads" asp-action="WarmLeads">🌤 Warm Leads</a>
@@ -58,7 +63,6 @@
         <div class="submenu-btn">🧑‍ Employees <span>+</span></div>
         <div class="submenu">
             <a asp-controller="Account" asp-action="Register">➕ Add Employee</a>
-            <a asp-controller="Employees" asp-action="UpdateEmployee">📝 Update Employee</a>
             <a asp-controller="Employees" asp-action="AllEmployees">📋 All Employees</a>
         </div>
 
@@ -80,7 +84,9 @@
     <div class="main" id="mainContent">
         @RenderBody()
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
     <!-- JS -->
     <script>
         const sidebar = document.getElementById("sidebarMenu");
@@ -129,6 +135,57 @@
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+
+             toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        @if (TempData["Success"] != null)
+        {
+                    <text>
+                    toastr.success("@TempData["Success"]");
+                    </text>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+                    <text>
+                    toastr.error("@TempData["Error"]");
+                    </text>
+        }
+
+        @if (TempData["Warning"] != null)
+        {
+                    <text>
+                    toastr.warning("@TempData["Warning"]");
+                    </text>
+        }
+
+        @if (TempData["Info"] != null)
+        {
+                    <text>
+                    toastr.info("@TempData["Info"]");
+                    </text>
+        }
+
+    </script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

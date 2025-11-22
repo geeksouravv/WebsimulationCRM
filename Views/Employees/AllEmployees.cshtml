@@ -1,0 +1,50 @@
+﻿@model IEnumerable<dynamic>
+
+<link href="~/css/Employees/AllEmployee.css" rel="stylesheet" />
+<div class="container mt-4">
+    <h2>All Employees</h2>
+
+    <table id="employeeTable" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Role</th>
+                <th>Team</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    
+                    <td>@emp.EmployeeName</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.PhoneNumber</td>
+                    <td>@emp.Role</td>
+                    <td>@emp.TeamName</td>
+
+                    <td>
+                        <button class="action-btn edit-btn">Edit</button>
+                        <button class="action-btn delete-btn">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section Scripts {
+    <script>
+             $(document).ready(function () {
+            $('#employeeTable').DataTable({
+                responsive: true,
+                autoWidth: false
+            });
+        });
+    </script>
+}
