@@ -1,0 +1,77 @@
+﻿@model IEnumerable<dynamic>
+@{
+    Layout = null;
+}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+        }
+
+        th {
+            background: #f2f2f2;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 6px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+    </style>
+
+
+    <h2>Employee List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Role</th>
+                <th>Team</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.EmployeeName</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.PhoneNumber</td>
+                    <td>@emp.Role</td>
+                    <td>@emp.TeamName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Generated on @DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt")
+    </div>
+

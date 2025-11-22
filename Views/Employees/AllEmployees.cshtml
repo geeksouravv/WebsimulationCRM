@@ -1,46 +1,59 @@
 ﻿@model IEnumerable<dynamic>
 
-<link href="~/css/Employees/AllEmployee.css" rel="stylesheet" />
-<div class="container mt-4">
-    <h2>All Employees</h2>
+<link rel="stylesheet" href="~/css/Employees/AllEmployee.css" />
 
-    <table id="employeeTable" class="display nowrap" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>Role</th>
-                <th>Team</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+<div class="page-wrapper">
 
-        <tbody>
-            @foreach (var emp in Model)
-            {
-                <tr>
-                    
-                    <td>@emp.EmployeeName</td>
-                    <td>@emp.Email</td>
-                    <td>@emp.PhoneNumber</td>
-                    <td>@emp.Role</td>
-                    <td>@emp.TeamName</td>
+    <div class="card-container">
 
-                    <td>
-                        <button class="action-btn edit-btn">Edit</button>
-                        <button class="action-btn delete-btn">Remove</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        <h2 class="page-title">All Employees</h2>
+
+        <div class="top-actions">
+            <a asp-action="EmployeesPDF" asp-controller="Employees" class="pdf-btn">
+                Download Employees PDF
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="employeeTable" class="display nowrap">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Role</th>
+                        <th>Team</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var emp in Model)
+                    {
+                        <tr>
+                            <td>@emp.EmployeeName</td>
+                            <td>@emp.Email</td>
+                            <td>@emp.PhoneNumber</td>
+                            <td>@emp.Role</td>
+                            <td>@emp.TeamName</td>
+
+                            <td>
+                                <button class="btn edit">Edit</button>
+                                <button class="btn delete">Remove</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 
 </div>
 
 @section Scripts {
     <script>
-             $(document).ready(function () {
+        $(document).ready(function () {
             $('#employeeTable').DataTable({
                 responsive: true,
                 autoWidth: false

@@ -1,0 +1,171 @@
+﻿/* PAGE CONTAINER */
+.lead-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* HEADING */
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1d4ed8;
+}
+
+/* TABLE */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.crm-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+}
+
+    /* HEADER */
+    .crm-table thead {
+        background: #2563eb;
+        color: #fff;
+    }
+
+        .crm-table thead th {
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+    /* ROWS */
+    .crm-table tbody tr {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+        .crm-table tbody tr:hover {
+            background: #f3f4f6;
+        }
+
+    .crm-table td {
+        padding: 10px 14px;
+        font-size: 14px;
+        color: #333;
+    }
+
+/* STATUS BADGES */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    color: white;
+}
+
+.status-new {
+    background: #3b82f6;
+}
+
+.status-hot {
+    background: #dc2626;
+}
+
+.status-warm {
+    background: #f59e0b;
+}
+
+.status-cold {
+    background: #6b7280;
+}
+
+/* ACTION BUTTONS */
+.action-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    /* Glass Look */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15), inset 0px 1px 2px rgba(255, 255, 255, 0.3);
+    transition: 0.25s ease;
+}
+
+    /* Hover Animation */
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.25), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
+    }
+
+/* ================================
+   COLOR THEMES
+   ================================ */
+.btn-edit {
+    background: rgba(37, 99, 235, 0.75);
+}
+
+    .btn-edit:hover {
+        background: rgba(29, 78, 216, 0.95);
+    }
+
+.btn-view {
+    background: rgba(16, 185, 129, 0.75);
+}
+
+    .btn-view:hover {
+        background: rgba(5, 122, 85, 0.95);
+    }
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.75);
+}
+
+    .btn-delete:hover {
+        background: rgba(185, 28, 28, 0.95);
+    }
+
+/* ================================
+   MOBILE RESPONSIVE
+   ================================ */
+@media (max-width: 768px) {
+    .action-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .lead-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .action-btns {
+        flex-direction: column;
+    }
+}

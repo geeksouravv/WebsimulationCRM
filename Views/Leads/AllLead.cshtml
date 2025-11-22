@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebsimulationCRM.CORE.DTO.LeadsAddResponse>
+
+@{
+    ViewData["Title"] = "All Leads";
+}
+<link href="~/css/Leads/AllLeads.css" rel="stylesheet" />
+
+<div class="lead-container">
+    <h2 class="page-title">All Leads</h2>
+
+    <div class="table-wrapper">
+        <table id="leadsTable" class="crm-table display nowrap">
+            <thead>
+                <tr>
+                    <th>Lead ID</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var lead in Model)
+                {
+                    <tr>
+                        <td>@lead.LeadID</td>
+                        <td>@lead.CustomerName</td>
+                        <td>@lead.Email</td>
+                        <td>@lead.PhoneNumber</td>
+                        <td>@lead.Source</td>
+
+                        <td>
+                            <span class="status-badge status-new">
+                                @lead.LeadStatus
+                            </span>
+                        </td>
+
+                        <td>@lead.CreatedAt.ToString("dd-MMM-yyyy")</td>
+
+                        <td class="action-btns">
+                            <a href="/Leads/Edit/@lead.LeadID" class="btn btn-edit">Edit</a>
+                            <a href="/Leads/View/@lead.LeadID" class="btn btn-view">View</a>
+                            <a href="/Leads/Delete/@lead.LeadID" class="btn btn-delete"
+                               onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#leadsTable').DataTable({
+                responsive: true,
+                pageLength: 5,
+                autoWidth: false
+            });
+        });
+    </script>
+}

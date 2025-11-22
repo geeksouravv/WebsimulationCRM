@@ -39,6 +39,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Lead Repository + Service DI
 builder.Services.AddScoped<ILeadRepository, LeadsRepository>();
 builder.Services.AddScoped<ILeadsAddService, LeadsAddService>();
+builder.Services.AddScoped<ILeadsGetService, LeadsGetService>();
 builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
@@ -55,6 +56,8 @@ if (!app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+
+Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePath: "Rotativa");
 app.UseStaticFiles();
 
 

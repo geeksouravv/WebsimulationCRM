@@ -53,10 +53,12 @@
         <div class="submenu">
             <a asp-controller="Leads" asp-action="AddLead">➕ Add Lead</a>
             <a asp-controller="Leads" asp-action="AssignLead">📌 Assign Lead</a>
+            <a asp-controller="Leads" asp-action="AllLead">📑 All Leads</a>
             <a asp-controller="Leads" asp-action="NewLeads">🆕 New Leads</a>
             <a asp-controller="Leads" asp-action="HotLeads">🔥 Hot Leads</a>
             <a asp-controller="Leads" asp-action="ColdLeads">❄ Cold Leads</a>
             <a asp-controller="Leads" asp-action="WarmLeads">🌤 Warm Leads</a>
+            <a asp-controller="Leads" asp-action="DeadLeads">🚫 Dead Leads</a>
         </div>
 
         <!-- EMPLOYEES -->
@@ -186,7 +188,6 @@
         }
 
     </script>
-
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Rotativa.AspNetCore;
 using WebsimulationCRM.CORE.Domain.IdentityEntities;
 using WebsimulationCRM.CORE.DTO;
 using WebsimulationCRM.CORE.ServiceContracts;
@@ -12,20 +13,34 @@ namespace WebsimulationCRM.UI.Controllers
     {
 
         private readonly INotificationService _notify;
-        public EmployeesController(INotificationService notificationService)
-        {
-            _notify = notificationService;
-        }
 
         private readonly UserManager<ApplicationUser> _userManager;
-        public EmployeesController(UserManager<ApplicationUser> userManager)
+        public EmployeesController(UserManager<ApplicationUser> userManager, INotificationService notificationService)
         {
             _userManager = userManager;
+            _notify = notificationService;
         }
 
         public IActionResult AllEmployees()
         {
-          var employees =  _userManager.Users
+            var employees = _userManager.Users
+                  .Select(u => new
+                  {
+                      u.Id,
+                      u.EmployeeName,
+                      u.Email,
+                      u.Role,
+                      u.TeamName,
+                      u.PhoneNumber
+
+                  }).ToList();
+
+            return View(employees);
+        }
+
+        public IActionResult EmployeesPDF()
+        {
+            var employees = _userManager.Users
                 .Select(u => new
                 {
                     u.Id,
@@ -37,7 +52,18 @@ namespace WebsimulationCRM.UI.Controllers
 
                 }).ToList();
 
-            return View(employees);
+            return new ViewAsPdf("EmployeesPDF", employees, ViewData)
+            {
+                PageMargins = new Rotativa.AspNetCore.Options.Margins()
+                {
+                    Top = 20,
+                    Right = 20,
+                    Bottom = 20,
+                    Left = 20
+                },
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape,
+                PageSize = Rotativa.AspNetCore.Options.Size.A4
+            };
         }
 
         //public async Task<IActionResult> Edit(string Id)
